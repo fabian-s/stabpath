@@ -9,3 +9,4 @@ Depends:
 Enhances: leaps, gbm, glmnet
 License: CC0
 LazyData: true
+RoxygenNote: 6.0.1
