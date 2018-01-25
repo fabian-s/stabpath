@@ -1,7 +1,8 @@
 Package: stabpath
 Title: compute stability selection paths
 Version: 0.1
-Authors@R: "Fabian Scheipl <fabian.scheipl@googlemail.com> [aut, cre]"
+Author: Fabian Scheipl [aut, cre]
+Maintainer: Fabian Scheipl <fabian.scheipl@googlemail.com>
 Description: A framework and some pre-defined methods for computing
     and visualizing stability selection paths from fitted model objects.
 Depends:
