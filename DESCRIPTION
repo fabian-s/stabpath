@@ -7,7 +7,8 @@ Description: A framework and some methods for computing
     and visualizing stability selection paths from fitted model objects.
 Depends:
     R (>= 3.1.2)
-Enhances: leaps, gbm, glmnet
+Imports: leaps
+Suggests: ElemStatLearn
 License: CC0
 LazyData: true
 RoxygenNote: 6.0.1

@@ -13,10 +13,11 @@ refit <- function(model, new_data, ...) {
 }
 
 #' @describeIn refit method for \code{\link[leaps]{regsubsets}}
+#' @importFrom leaps regsubsets
 refit.regsubsets <- function(model, new_data, ...) {
   modelcall <- model$call
   if (!is.null(modelcall$weights)) {
-    if(is.null(new_data$weights))
+    if (is.null(new_data$weights))
       stop("model weights not supplied in 'new_data'")
     modelcall$data <- new_data$data
     modelcall$weights <- new_data$weights
@@ -24,11 +25,8 @@ refit.regsubsets <- function(model, new_data, ...) {
     modelcall$data <- new_data
   }
   # use regsubsets-generic instead of regsubsets.formula or other method as
-  # methods are not exported by leaps:
-  # use as.name on string instead of function name directly to avoid R CMD CHECK
-  # complaining about undeclared global variable ....
-  modelcall[[1]] <-  as.name("leaps::regsubsets")
-  eval(modelcall)
+  # regsubsets-methods are not exported by leaps, i.e., not accessible from here:
+  do.call(regsubsets, as.list(modelcall[-1]))
 }
 
 #' @describeIn refit method for \code{\link[gbm]{gbm}} objects.
