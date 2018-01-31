@@ -27,6 +27,16 @@
 #'   frequencies with class \code{stabpath}. First row is the null model (no
 #'   covariates, i.e., all 0s)
 #' @export
+#' @examples 
+#' library(ElemStatLearn)
+#' library(leaps)
+#' data(prostate)
+#' data <- prostate
+#' max_formula <- lpsa ~ (. - train)
+#' model <- regsubsets(max_formula, data=data, nbest = 1, nvmax = 8,
+#'   really.big = TRUE)
+#' set.seed(20141020)
+#' stability_paths <- get_stability_paths(model, data, reps=10)
 get_stability_paths <- function(model, data, reps = 100, method = "subsample",
   strata = NULL, fraction = 0.5) {
 

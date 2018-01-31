@@ -44,3 +44,14 @@ arguments (for example, \code{list(x = <design matrix>, y = <response>,
 weights = <model weights>, offset = <model offsets>)} or
 \code{list(data = <dataframe>, weights = <model weights>)})
 }
+\examples{
+library(ElemStatLearn)
+library(leaps)
+data(prostate)
+data <- prostate
+max_formula <- lpsa ~ (. - train)
+model <- regsubsets(max_formula, data=data, nbest = 1, nvmax = 8,
+  really.big = TRUE)
+set.seed(20141020)
+stability_paths <- get_stability_paths(model, data, reps=10)
+}
