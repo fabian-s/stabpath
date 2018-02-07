@@ -8,7 +8,8 @@ Description: A framework and some methods for computing
 Depends:
     R (>= 3.1.2)
 Imports: leaps
-Suggests: ElemStatLearn
+Suggests: ElemStatLearn,
+    testthat
 License: CC0
 LazyData: true
 RoxygenNote: 6.0.1
