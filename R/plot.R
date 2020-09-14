@@ -10,6 +10,9 @@
 #'  See source code for defaults.
 #' @param ... optional additional arguments handed over to \code{par}.
 #' @return invisibly returns the plotted object
+#' @importFrom utils modifyList
+#' @importFrom graphics matplot mtext par
+#' @importFrom grDevices hcl
 #' @export
 plot.stabpath <- function(x, y=NULL, label_position = c("rank", "mean"),
     path_pars=list(), label_pars=list(),  ...) {
@@ -24,8 +27,8 @@ plot.stabpath <- function(x, y=NULL, label_position = c("rank", "mean"),
   n_step <- nrow(x)
 
   # default qualitative palette:
-  col <- hcl(h = seq(0, 360, l=n_cov+1) + 15,
-    c= 100, l = 65)[-(n_cov+1)]
+  col <- hcl(h = seq(0, 360, l = n_cov + 1) + 15,
+    c = 100, l = 65)[-(n_cov + 1)]
 
   default_path_pars <- list(lty = 1, type = "l", bty = "n", col = col,
     x = 0:(n_step - 1), pch = 19, xlab = "regularization",
@@ -42,7 +45,7 @@ plot.stabpath <- function(x, y=NULL, label_position = c("rank", "mean"),
     }
 
   default_label_pars <- list(text = colnames(x), side = 4, at = label_pos,
-    col = col, las=1)
+    col = col, las = 1)
   label_pars <- modifyList(default_label_pars, label_pars)
 
   do.call(mtext, label_pars)
